@@ -146,12 +146,14 @@
                             <h3 class="kt-login__title">Forgotten Password ?</h3>
                             <div class="kt-login__desc">Enter your email to reset your password:</div>
                         </div>
-                        <form class="kt-form" action="">
+                        <form class="kt-form" action="{{route('password.email')}}" method="post">
+                           {{csrf_field()}}
                             <div class="input-group">
                                 <input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
                             </div>
                             <div class="kt-login__actions">
-                                <button id="kt_login_forgot_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">Request</button>&nbsp;&nbsp;
+                                {{--kt_login_forgot_submit--}}
+                                <input type="submit" id="" class="btn btn-brand btn-elevate kt-login__btn-primary" value="Request">&nbsp;&nbsp;
                                 <button id="kt_login_forgot_cancel" class="btn btn-light btn-elevate kt-login__btn-secondary">Cancel</button>
                             </div>
                         </form>
