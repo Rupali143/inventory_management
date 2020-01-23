@@ -17,7 +17,8 @@ class LoginController extends Controller
 
     public function index()
     {
-        return view('users/login');
+//        echo'hihi';die;
+        return view('auth/login');
     }
 
     public function doLogin(Request $request){

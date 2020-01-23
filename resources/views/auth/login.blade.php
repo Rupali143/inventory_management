@@ -128,6 +128,8 @@
     <link href="assets/css/skins/aside/dark.css" rel="stylesheet" type="text/css" />
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    {{--<script src="http://parsleyjs.org/dist/parsley.js"></script>--}}
+
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->
@@ -159,18 +161,20 @@
                         @endif
 
                         @if(session('success'))
-                            <div class="alert alert-danger">
+                            <div class="alert alert-success">
                                 <li> {{session('success')}}</li>
                             </div>
                         @endif
-
-                        <form class="kt-form" action="{{ route('login') }}" method="post">
+                        @if (session('status'))
+                            <p class="alert alert-success">{{ session('status') }}</p>
+                        @endif
+                        <form class="kt-form" action="{{ route('login') }}" method="post" id="kt-login-form">
                             {{csrf_field()}}
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+                                <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off"  data-parsley-type="email" data-parsley-required-message="Email is required" data-parsley-trigger="keyup">
                             </div>
                             <div class="input-group">
-                                <input class="form-control" type="password" placeholder="Password" name="password">
+                                <input class="form-control" type="password" placeholder="Password" name="password"  data-parsley-length="" data-parsley-required-message="Password is required" data-parsley-trigger="keyup">
                             </div>
                             <div class="row kt-login__extra">
                                 {{--<div class="col">--}}
@@ -194,16 +198,16 @@
                             <h3 class="kt-login__title">Sign Up</h3>
                             <div class="kt-login__desc">Enter your details to create your account:</div>
                         </div>
-                        <form class="kt-form" action="{{route('register')}}" method="post">
+                        <form class="kt-form" action="{{route('register')}}" method="post" id="register_form">
                             @csrf
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Fullname" name="name">
+                                <input class="form-control" type="text" placeholder="Fullname" name="name" required data-parsley-pattern="/^[a-zA-Z]*$/" data-parsley-required-message="Full Name is required" data-parsley-trigger="keyup">
                             </div>
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+                                <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off" required data-parsley-type="email"  data-parsley-required-message="Email is required" data-parsley-trigger="keyup">
                             </div>
                             <div class="input-group">
-                                <input class="form-control" type="password" placeholder="Password" name="password">
+                                <input class="form-control" type="password" placeholder="Password" name="password" required data-parsley-length="[8]" data-parsley-required-message="Password is required" data-parsley-trigger="keyup">
                             </div>
                             <div class="kt-login__actions">
                                 {{--kt_login_signup_submit--}}
@@ -217,12 +221,14 @@
                             <h3 class="kt-login__title">Forgotten Password ?</h3>
                             <div class="kt-login__desc">Enter your email to reset your password:</div>
                         </div>
-                        <form class="kt-form" action="">
+                        <form class="kt-form" action="{{route('password.email')}}" method="post" id="forgot_form">
+                            @csrf
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
+                                <input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off" required data-parsley-type="email" data-parsley-trigger="keyup"  data-parsley-required-message="Email is required">
                             </div>
                             <div class="kt-login__actions">
-                                <button id="kt_login_forgot_submit" class="btn btn-brand btn-elevate kt-login__btn-primary">Request</button>&nbsp;&nbsp;
+                                {{--kt_login_forgot_submit--}}
+                                <input type="submit" id="" class="btn btn-brand btn-elevate kt-login__btn-primary" value="Request">&nbsp;&nbsp;
                                 <button id="kt_login_forgot_cancel" class="btn btn-light btn-elevate kt-login__btn-secondary">Cancel</button>
                             </div>
                         </form>
@@ -273,9 +279,11 @@
         }
     };
 </script>
+
 <!-- end::Global Config -->
 <!--begin::Global Theme Bundle(used by all pages) -->
 <!--begin:: Vendor Plugins -->
+{{--<script src="{{asset('assets/plugins/parsley.js')}}" type="text/javascript"></script>--}}
 <script src="assets/plugins/general/jquery/dist/jquery.js" type="text/javascript"></script>
 <script src="assets/plugins/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
 <script src="assets/plugins/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
@@ -316,6 +324,20 @@
 <!--begin::Page Scripts(used by this page) -->
 <script src="assets/js/pages/custom/login/login-general.js" type="text/javascript"></script>
 <!--end::Page Scripts -->
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+{{--<script src="http://parsleyjs.org/dist/parsley.js"></script>--}}
+<script src="{{asset('js/parsley.min.js')}}"></script>
+<script src="{{asset('js/parsley.js')}}"></script>
+<script>
+    $(document).ready(function() {
+//        alert("sdfsdf");
+        $('#kt-login-form').parsley();
+        $('#forgot_form').parsley();
+        $('#register_form').parsley();
+
+    });
+</script>
 </body>
 <!-- end::Body -->
 </html>

@@ -282,6 +282,7 @@
 <!-- end::Global Config -->
 <!--begin::Global Theme Bundle(used by all pages) -->
 <!--begin:: Vendor Plugins -->
+<script src="assets/js/parsley.js" type="text/javascript"></script>
 <script src="assets/plugins/general/jquery/dist/jquery.js" type="text/javascript"></script>
 <script src="assets/plugins/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
 <script src="assets/plugins/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>

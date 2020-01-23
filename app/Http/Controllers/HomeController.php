@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Eloquent\Model\Product;
+use App\Eloquent\Repositories\ProductsRepository AS Repo;
 
 class HomeController extends Controller
 {
@@ -11,18 +13,24 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected $product;
+    
+    public function __construct(Product $product)
     {
      //   $this->middleware('auth');
+        $this->model = new Repo($product);
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return prductCount int
      */
-    public function index()
+    public function dashboard()
     {
-        return view('index');
+        $productCount= $this->model->productCount();
+        return view('dashboard',compact('productCount'));
     }
+
+
 }
