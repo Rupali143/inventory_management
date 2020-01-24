@@ -1,8 +1,24 @@
-@extends('layouts.header');
-@extends('layouts.sidebar');
+@extends('layouts.header')
+@extends('layouts.sidebar')
 
 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+                <h3 class="kt-subheader__title">
+                    Products </h3>
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                    <a href="" class="kt-subheader__breadcrumbs-link">
+                        Add product </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end:: Subheader -->
     @if(count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -23,33 +39,36 @@
     <div class="tab-content  kt-margin-t-20">
 
         <!--Begin:: Tab Content-->
-        <div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">
+        <div class="kt-portlet">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title">
+                        Add Products
+                    </h3>
+                </div>
+            </div><br>
+        {{--<div class="tab-pane active" id="kt_apps_contacts_view_tab_2" role="tabpanel">--}}
+
             <form class="kt-form kt-form--label-right" action="{{ route('product.store') }}" method="post">
                 @csrf
                 <div class="kt-form__body">
                     <div class="kt-section kt-section--first">
                         <div class="kt-section__body">
-                            <div class="row">
-                                <label class="col-xl-3"></label>
-                                <div class="col-lg-9 col-xl-6">
-                                    <h3 class="kt-section__title kt-section__title-sm">Add Products:</h3>
-                                </div>
-                            </div>
                             <div class="form-group row">
                                 <label class="col-xl-3 col-lg-3 col-form-label">Name</label>
                                 <div class="col-lg-9 col-xl-6">
-                                    <input class="form-control" type="text" name="name" placeholder="Enter Product name">
+                                    <input class="form-control" type="text" name="name" placeholder="Enter Product name" required data-parsley-pattern="/^[a-zA-Z]*$/" data-parsley-required-message="Product Name is required" data-parsley-trigger="keyup">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-xl-3 col-lg-3 col-form-label">Category</label>
                                 <div class="col-lg-9 col-xl-6">
-                                    <input class="form-control" type="text" name="category" placeholder="Enter Product Category">
+                                    <input class="form-control" type="text" name="category" placeholder="Enter Product Category" required data-parsley-pattern="/^[a-zA-Z]*$/" data-parsley-required-message="Category is required" data-parsley-trigger="keyup">
                                 </div>
                             </div>
                             <div class="form-group col-8">
                                 <input type="submit" class="btn btn-brand btn-bold pull-right" value="Save Changes" style="margin-left: 20px;">
-                                <a href="{{route('product.index')}}" type="button" class="btn btn-brand btn-bold pull-right">Back</a>
+                                <a href="{{ route('product.index') }}" type="button" class="btn btn-brand btn-bold pull-right">Back</a>
 
                             </div>
                       </div>
@@ -58,10 +77,11 @@
                 </div>
 
             </form>
-        </div>
+        {{--</div>--}}
    </div>
 </div>
 </div>
+        </div>
         <!--End:: Tab Content-->
 
 @extends('layouts.footer');

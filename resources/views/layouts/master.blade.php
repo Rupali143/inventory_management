@@ -236,6 +236,9 @@
 
     <!--end::Page Vendors -->
 
+    <script src="{{asset('js/parsley.min.js')}}"></script>
+    <script src="{{asset('js/parsley.js')}}"></script>
+
     <!--begin::Page Scripts(used by this page) -->
     <script src="{{asset('assets/js/pages/dashboard.js')}}" type="text/javascript"></script>
 

@@ -19,7 +19,9 @@
 
 	<!-- end:: Footer -->
 
-
+   </div>
+   </div>
+   </div>
 <!-- end:: Page -->
    <!-- begin::Sticky Toolbar -->
    <ul class="kt-sticky-toolbar" style="margin-top: 30px;">

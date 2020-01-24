@@ -2,7 +2,16 @@
 @extends('layouts.sidebar')
 
 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+                <h3 class="kt-subheader__title">
+                    Dashboard </h3>
+            </div>
+        </div>
+    </div>
+    <!-- end:: Subheader -->
     <!-- begin:: Header -->
     <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
 
