@@ -16,12 +16,12 @@
         </div>
     </div>
     <!-- end:: Header Mobile -->
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
+    {{--@if ($message = Session::get('success'))--}}
+        {{--<div class="alert alert-success alert-block">--}}
+            {{--<button type="button" class="close" data-dismiss="alert">×</button>--}}
+            {{--<strong>{{ $message }}</strong>--}}
+        {{--</div>--}}
+    {{--@endif--}}
     <div class="kt-grid kt-grid--hor kt-grid--root">
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
             <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper"
@@ -165,3 +165,5 @@
                 </div>
 
                 <!-- end:: Header -->
+</div>
+        </div>

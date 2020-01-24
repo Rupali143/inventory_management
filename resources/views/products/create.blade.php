@@ -48,7 +48,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-8">
-                            <input type="submit" class="btn btn-brand btn-bold pull-right" value="Save Changes">
+                                <input type="submit" class="btn btn-brand btn-bold pull-right" value="Save Changes" style="margin-left: 20px;">
+                                <a href="{{route('product.index')}}" type="button" class="btn btn-brand btn-bold pull-right">Back</a>
+
                             </div>
                       </div>
                     </div>

@@ -1,5 +1,5 @@
 
-   <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+   {{--<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">--}}
 
 
 
@@ -18,9 +18,7 @@
 	</div>
 
 	<!-- end:: Footer -->
-</div>
 
-</div>
 
 <!-- end:: Page -->
    <!-- begin::Sticky Toolbar -->
